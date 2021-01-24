@@ -33,7 +33,6 @@ public class ResourceInfo {
             InputStream inputStream = resource.getInputStream();
             byte[] byteData = FileCopyUtils.copyToByteArray(inputStream);
             this.logs = new String(byteData, StandardCharsets.UTF_8); // converting non-unicode text to unicode with UTF-8
-            System.out.println(logs);
         } catch (FileNotFoundException e) {
             logger.info("Exception occurred while reading the file: {}", e.getMessage());
         }
@@ -42,7 +41,7 @@ public class ResourceInfo {
 
     private String trimExtraSlash(String resourcePath) {
         if (resourcePath != null && resourcePath.endsWith("/")) {
-            resourcePath = resourcePath.substring(0, resourcePath.length() - 1);
+            resourcePath = resourcePath.trim().substring(0, resourcePath.length() - 1);
         }
         return resourcePath;
     }

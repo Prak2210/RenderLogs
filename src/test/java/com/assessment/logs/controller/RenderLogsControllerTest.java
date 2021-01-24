@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RenderLogsControllerTest {
 
-
     @Test
     void verifyRenderLogsFunctionWithDefaultResourceInfoIfFileNotRead() {
         ResourceInfo resourceInfo = new ResourceInfo(null, null, "default message to user if failure");
