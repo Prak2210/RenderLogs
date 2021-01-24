@@ -1,0 +1,45 @@
+01/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP
+01/22 08:51:06 INFO   :....mailbox_register: mailbox allocated for rsvp
+01/22 08:51:06 INFO   :.....mailslot_create: creating mailslot for RSVP via UDP
+01/22 08:51:06 INFO   : initialized
+01/22 08:51:06 TRACE  : task1
+01/22 08:51:06 INFO   : task2
+01/22 08:51:06 INFO   : task3
+01/22 08:51:06 WARNING: lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 TRACE  : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 WARNING: lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 TRACE  : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 TRACE  : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 TRACE  : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 INFO   : lines of exceptions
+01/22 08:51:06 TRACE  : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:51:11 INFO   : lines of exceptions
+01/22 08:52:50 INFO   : lines of exceptions
+01/22 08:52:50 INFO   : lines of exceptions
