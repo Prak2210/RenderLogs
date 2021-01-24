@@ -1,0 +1,6 @@
+# configuration file to set environment variables
+# Gives developers control to set configurations during deployment only.
+resource:
+  name: any name
+  path: anything
+  defaultMessage: file not found but defaults were set properly
