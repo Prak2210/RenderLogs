@@ -1,6 +1,6 @@
 # configuration file to set environment variables
 # Gives developers control to set configurations during deployment only.
 resource:
-  name: cluster_logs
-  path: clusterlogs
+  name: logs
+  path: /
   defaultMessage: Logs Not Found
