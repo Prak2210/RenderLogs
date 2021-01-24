@@ -1,0 +1,1 @@
+# Render Logs from internal resource to the server
