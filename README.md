@@ -204,6 +204,7 @@ Requirements:
 
 > java -jar <jar_name>.jar
 ```
+![Run a jar from cmd] <img width="1420" alt="Screen Shot 2021-01-25 at 12 49 08 AM" src="https://user-images.githubusercontent.com/20255532/105668118-afb10f80-5eaa-11eb-8b74-03a5f7b59089.png">
 
 ##### 3. See Output
 - Open your browser and go to **http://localhost:8080/logs**
