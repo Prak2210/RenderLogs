@@ -7,6 +7,7 @@ It's a Java (openjdk@11) Spring Boot based Application which has following featu
 - Requests are mapped to "/logs"
 - Based on requiements, I have assumed file size is smaller (<1000 lines)
 - Configurable parameters to read logs from different files without touching code itself
+- Sample file used: [sample logs](https://github.com/Prak2210/RenderLogs/blob/main/src/main/resources/logs)
 
 # Points covered:
 - Objective
