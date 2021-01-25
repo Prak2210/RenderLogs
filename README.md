@@ -206,7 +206,7 @@ Requirements:
 ```
 ![Run a jar from cmd] (<img width="1420" alt="Screen Shot 2021-01-25 at 12 49 08 AM" src="https://user-images.githubusercontent.com/20255532/105668118-afb10f80-5eaa-11eb-8b74-03a5f7b59089.png">)
 
-![Output on browser](<img width="1421" alt="Screen Shot 2021-01-25 at 12 50 23 AM" src="https://user-images.githubusercontent.com/20255532/105668326-16362d80-5eab-11eb-8b63-589bd609b73d.png">)
+<img width="1421" alt="Screen Shot 2021-01-25 at 12 50 23 AM" src="https://user-images.githubusercontent.com/20255532/105668326-16362d80-5eab-11eb-8b63-589bd609b73d.png">
 
 
 ##### 3. See Output
