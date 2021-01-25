@@ -28,7 +28,7 @@ public class RenderLogsController {
     @ResponseBody
     public String renderLogs() {
         logger.info("logs are from file: {} ", resourceInfo.getResourcePath() + "/" + resourceInfo.getResourceName());
-        logger.info("request number {}", requestCount++);
+        logger.info("request number {}", ++requestCount);
         return this.resourceInfo.getLogs();
     }
 }
