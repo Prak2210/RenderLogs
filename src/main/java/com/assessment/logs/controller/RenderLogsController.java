@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * This controller takes ResourceInfo object from the bean class LogReadConfig
- * and renders output on server for each request
+ * This class' constructor is autowired to LogReadConfig.getResourceInfo bean
+ * using which it outputs the file content on localhost:8080/logs path
+ *
  */
 @Controller
 public class RenderLogsController {

@@ -7,9 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class RenderLogsApplication {
-	private static final Logger logger = LoggerFactory.getLogger(RenderLogsApplication.class);
-	public static void main(String[] args) {
-		SpringApplication.run(RenderLogsApplication.class, args);
-		logger.info("Configurations loaded");
-	}
+    private static final Logger logger = LoggerFactory.getLogger(RenderLogsApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(RenderLogsApplication.class, args);
+        logger.info("Configurations loaded and ready to be rendered");
+        logger.info("use the command \"curl http://localhost:8080/logs\"");
+    }
 }

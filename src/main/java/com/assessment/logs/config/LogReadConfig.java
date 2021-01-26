@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * loads configuration at the compile time, sets default value for few configs if not given by developer
+ * loads configuration on the startup, sets default value for few configs if not given by developer
  * instantiates ResourceInfo class which reads the log data at the startup
  */
 @Component
