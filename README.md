@@ -1,15 +1,70 @@
 # Render Logs from internal resource to the server
-
-
-It's a Java (openjdk@11) Spring Boot based Application which has following features based on requirements:
-- Reads logs from a log file on the startup
-- Renders logs on the servcer as soon as the request comes
-- Requests are mapped to "/logs"
-- Based on requiements, I have assumed file size is smaller (<1000 lines)
+Java (openjdk@11) Spring Boot based Application which has following features based on requirements:
+- Given file is assumed to have <1000 lines
+- Reads logs from a log file *on the startup*
+- Outputs logs  (file content) on the server as soon as the request comes
+- Requests are mapped to "/logs" -> *curl http://locahost:8080/logs*
 - Configurable parameters to read logs from different files without touching code itself
 - Sample file used: [sample logs](https://github.com/Prak2210/RenderLogs/blob/main/src/main/resources/logs)
 
-# Points covered:
+### Key Highlights
+- Application takes 3 parameters from application.yaml (configuration) file which gives developer more control towards changing file path, name and default message without touching code.
+- In case of a "FileNotFound", application outputs "defaultMessage" provided by developers in config file.
+- Application leverages Spring Boot Framework and capabilities of annotators provided by it
+- Some of the classes have private variables, getters and setters for access control
+
+### Points Covered:
+- How to run in your local?
+- Implementation & Testing
+-- How configuration settings gives more control over the application
+- Future Improvement
+
+### How to run in your local?
+```
+Requirements:
+- Java (openJDK@11)
+    - if you have mac, try this: brew install --cask adoptopenjdk11
+- Gradle command
+    - if mac, try this: brew install gradle
+```
+#### Step 1. Clone the Repo
+```
+> git clone https://github.com/Prak2210/RenderLogs.git
+```
+#### Step 2. Start Application by cloned repo
+
+##### Option A: Build using gradle and run a jar
+```
+> cd renderlogs
+> gradle clean build
+> java -jar ./build/libs/renderlogs-0.1.jar
+```
+##### Option B: If you use intelliJ
+```
+1. open build.gradle
+2. Right click and select, "import gradle project" -> intelliJ will index your files
+3. Once done, run the com.assessment.logs.RenderLogsApplication java file to start the App
+```
+##### Option C: Use the Jar Provided
+```
+"cd" to the same location where you placed the jar and run
+> java -jar <jar_name>.jar
+```
+#### Screenshot of Running a Jar from CMD
+<img width="1420" alt="Screen Shot 2021-01-25 at 12 49 08 AM" src="https://user-images.githubusercontent.com/20255532/105668118-afb10f80-5eaa-11eb-8b74-03a5f7b59089.png">
+
+#### Screenshot of Output from Terminal
+![Screen Shot 2021-01-26 at 6 21 09 PM](https://user-images.githubusercontent.com/20255532/105919287-5c9ea000-6003-11eb-98b5-d0f52b937eba.png)
+
+#### 3. See Output
+- From terminal, do following:
+ ```
+ > curl http://localhost:8080/logs
+ ```
+- You can see your logs at this location
+- Monitor the logs in application console, you can see request numbers as well.
+
+### Points Covered:
 - Objective
 - Implementation Strategy
   -- How configuration settings gives more control over the application
@@ -23,20 +78,9 @@ A service which read an internally stored log file on the startup. Once started,
 
 ### Implementation Strategy
 
-To get started with this, I had to clear few questions for requirements.
-- I wanted to confirm what exactly "startup" means?
-  -- Should it read data at compile time and render that while running?
-  -- Or when started, it reads data line by line and renders it?
-- What should be rendered in case of log data file isn't available?
+#### Why Java Spring Boot Framework?
 
-For this, the final requirements I received are:
-- Any Java version
-- read at compile time and render while running
-- any default message
-
-#### Java Spring Boot Framework
-
-I chose Spring Boot for because I would not have to waste a lot of time configuring the environment. It created all for me. I just had to worry about configurations and tests. Also, Annotations by spring make loading env variables and configuring unit tests very easy.
+I chose Spring Boot for because I would not have to waste a lot of time configuring the environment. It created all for me. I just had to worry about code logic and tests. Also, Annotations by spring make loading env variables and configuring unit tests very easy.
 
 #### Structure
 Application has following structure:
@@ -172,52 +216,5 @@ all the tests here check these scenarios:
 ##### RenderLogsApplicationTests
 Basic test which loads "application-test.yaml" as an activeProfile and verifies if returned object for renderLogsController is not Null.
 
-### Run an Application in your local
-```
-Requirements:
-    - Java
-    - Gradle command
-```
-##### 1. Clone the repo
-```
-> git clone https://github.com/Prak2210/RenderLogs.git
-```
-##### 2. Start Application by cloned repo
-
-###### Option A: Build using gradle and run a jar
-```
-> cd renderlogs
-> gradle clean build
-> java -jar ./build/libs/renderlogs-0.1.jar
-
-```
-###### Option B: If you use intelliJ
-```
-1. open build.gradle
-2. Right click and select, "import gradle project" -> intelliJ will index your files
-3. Once done, run the com.assessment.logs.RenderLogsApplication java file to start the App
-
-```
-
-###### Option C: Use the Jar provided
-```
-"cd" to the same location where you placed the jar and run
-
-> java -jar <jar_name>.jar
-```
-##### Running a Jar from CMD
-<img width="1420" alt="Screen Shot 2021-01-25 at 12 49 08 AM" src="https://user-images.githubusercontent.com/20255532/105668118-afb10f80-5eaa-11eb-8b74-03a5f7b59089.png">
-
-##### Output from Terminal
-![Screen Shot 2021-01-26 at 6 21 09 PM](https://user-images.githubusercontent.com/20255532/105919287-5c9ea000-6003-11eb-98b5-d0f52b937eba.png)
-
-##### 3. See Output
-- From terminal, do following:
- ```
- >curl http://localhost:8080/logs
- ```
-- You can see your logs at this location
-- Monitor the logs in application console, you can see request numbers as well.
-
 ### Future Improvement
-- Here, file is assumed to have <1000 lines and *infrequent changes*. So I am loading and reading this file at the startup so we don't need to do a lot when request is made. But if we have the file changing *frequently*, reading after startup would make sense with caching options.
+- Here, file is assumed to have <1000 lines and *infrequent changes*. So I am loading and reading this file on the startup so we don't need to do a lot when request is made. But if we have the file changing *frequently*, different strategy for reading would make more sense.
