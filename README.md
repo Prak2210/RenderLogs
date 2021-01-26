@@ -9,7 +9,7 @@ Java (openjdk@11) Spring Boot based Application which has following features bas
 
 ### Key Highlights
 - Application takes 3 parameters from application.yaml (configuration) file which gives developer more control towards changing file path, name and default message without touching code.
--- this can be helpful if we want to deploy the API in future and have CD tools to modify just configurations without going through entire build. 
+    * Helpful if we want to deploy the API in future and have CD tools to modify just configurations without going through entire build.
 - In case of a "FileNotFound", application outputs "defaultMessage" provided by developers in config file.
 - Application leverages Spring Boot Framework and capabilities of annotators provided by it
 - Some of the classes have private variables, getters and setters for access control
