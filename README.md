@@ -42,9 +42,10 @@ Requirements:
 ```
 ##### Option B: If you use intelliJ
 ```
-1. open build.gradle
-2. Right click and select, "import gradle project" -> intelliJ will index your files
-3. Once done, run the com.assessment.logs.RenderLogsApplication java file to start the App
+1. Open project in intelliJ
+2. open build.gradle
+3. Right click and select, "import gradle project" -> intelliJ will index your files
+4. Once done, run the com.assessment.logs.RenderLogsApplication java file to start the App
 ```
 ##### Option C: Use the Jar Provided
 ```
