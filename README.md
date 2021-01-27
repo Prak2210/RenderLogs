@@ -19,9 +19,7 @@ Java (**openjdk@11**) Spring Boot based Application which has following features
 
 ### Points Covered:
 - Getting started in your local
-- Implementation & Testing
--- How configuration settings gives more control over the application
-- Future Improvement
+- Detailed: Implementation & Testing
 
 ### Getting started in your local
 ```
