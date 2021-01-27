@@ -1,6 +1,6 @@
 
 ### Objective
-A service which read an internally stored log file on the startup. Once started, it needs to have a REST endpoint where it should render the data.
+A service which reads an internally stored log file on the startup. Once started, it renders the data on a REST endpoint.
 
 # Render Logs from internal resource to the server
 Java (**openjdk@11**) Spring Boot based Application which has following features based on requirements:
