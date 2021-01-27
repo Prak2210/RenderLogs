@@ -1,5 +1,9 @@
+
+### Objective
+A service which read an internally stored log file on the startup. Once started, it needs to have a REST endpoint where it should render the data.
+
 # Render Logs from internal resource to the server
-Java (openjdk@11) Spring Boot based Application which has following features based on requirements:
+Java (**openjdk@11**) Spring Boot based Application which has following features based on requirements:
 - Given file is assumed to have <1000 lines
 - Reads logs from a log file *on the startup*
 - Outputs logs  (file content) on the server as soon as the request comes
@@ -8,20 +12,18 @@ Java (openjdk@11) Spring Boot based Application which has following features bas
 - Sample file used: [sample logs](https://github.com/Prak2210/RenderLogs/blob/main/src/main/resources/logs)
 
 ### Key Highlights
-- Application takes 3 parameters from application.yaml (configuration) file which gives developer more control towards changing file path, name and default message without touching code.
-    * Helpful if we want to deploy the API in future and have CD tools to modify just configurations without going through entire build.
+- Application takes 3 parameters from application.yaml (configuration) file which gives developer more control towards changing resource information.
 - In case of a "FileNotFound", application outputs "defaultMessage" provided by developers in config file.
 - Application leverages Spring Boot Framework and capabilities of annotators provided by it
 - path: "/directory1/" and "/directory1" both work.
-- Some of the classes have private variables, getters and setters for access control
 
 ### Points Covered:
-- How to run in your local?
+- Getting started in your local
 - Implementation & Testing
 -- How configuration settings gives more control over the application
 - Future Improvement
 
-### How to run in your local?
+### Getting started in your local
 ```
 Requirements:
 - Java (openJDK@11)
@@ -67,23 +69,7 @@ Requirements:
 - You can see your logs at this location
 - Monitor the logs in application console, you can see request numbers as well.
 
-### Points Covered:
-- Objective
-- Implementation Strategy
-  -- How configuration settings gives more control over the application
-- Testing Strategy
-- How to run application in your local?
-- Future Improvement
-
-### Objective
-
-A service which read an internally stored log file on the startup. Once started, it needs to have a REST endpoint where it should render the data. *Given log data file is assumed to have less than 1000 entries*
-
 ### Implementation Strategy
-
-#### Why Java Spring Boot Framework?
-
-I chose Spring Boot for because I would not have to waste a lot of time configuring the environment. It created all for me. I just had to worry about code logic and tests. Also, Annotations by spring make loading env variables and configuring unit tests very easy.
 
 #### Structure
 Application has following structure:
@@ -110,13 +96,6 @@ resource:
   path: /
   defaultMessage: Logs Not Found
 ```
-- [Required] resource.name = name of the file you want logs from
-- [Required] resource.path = classpath of the file under resources module
-- [Optional] resource.defaultMessage = default message to display on server if file is not found
-
-##### How configuration settings gives more control over the application
-Having these configuration in yaml can be beneficial if you want to change settings but don't want to touch the code. If you have Helm templates or Argo CD, you just need to override these values. No need to go through full CI/CD.
-
 #### RenderLogsApplication
 RenderLogs Application is a main Spring boot class for my application which is used to start the application and also, using the @SpringBootApplication annotation it enables auto configs, components scanning and allows extra beans to register.
 - It logs "configurations loaded" in the console once compilation done successfully.
@@ -219,6 +198,3 @@ all the tests here check these scenarios:
 
 #### RenderLogsApplicationTests
 Basic unit test which loads "application-test.yaml" as an activeProfile and verifies if returned object for renderLogsController is not Null.
-
-### Future Improvement
-- Here, file is assumed to have <1000 lines and *infrequent changes*. So I am loading and reading this file on the startup so we don't need to do a lot when request is made. But if we have the file changing *frequently*, different strategy for reading would make more sense.
