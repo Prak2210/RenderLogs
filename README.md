@@ -102,7 +102,7 @@ resources
     - application.yaml
     - logs
 ```
-##### application.yaml
+#### application.yaml
 Here, application yaml works as our default configuration file. You can load these configs at compile time:
 ```
 resource:
@@ -117,11 +117,11 @@ resource:
 ##### How configuration settings gives more control over the application
 Having these configuration in yaml can be beneficial if you want to change settings but don't want to touch the code. If you have Helm templates or Argo CD, you just need to override these values. No need to go through full CI/CD.
 
-##### RenderLogsApplication
+#### RenderLogsApplication
 RenderLogs Application is a main Spring boot class for my application which is used to start the application and also, using the @SpringBootApplication annotation it enables auto configs, components scanning and allows extra beans to register.
 - It logs "configurations loaded" in the console once compilation done successfully.
 
-##### LogReadConfig
+#### LogReadConfig
 It's a component which gets scanned during component scan as part of @SpringBootApplication in RenderLogsApplication.
 - it reads the resource.path, resource.name and resource.defaultMessage configs from yaml file.
 ```
@@ -140,7 +140,7 @@ public ResourceInfo getResourceInfo() throws IOException {
 - @Bean method getResourceInfo gets instantiated and assembled by Spring IoC at the scan time. Method instantiates ResourceInfo object with parameters passed from yaml configs.
 - Once instantiated ResourceInfo, it calls read() on it and returns the object.
 
-##### ResourceInfo
+#### ResourceInfo
 - This class handles reading from log data file
 - As mentioned, ResourceInfo gets initialized by bean method in LogReadConfig class
 - To initialize this class, it is necessary to have
@@ -177,7 +177,7 @@ read() {
 ```
 
 
-##### RenderLogsController
+#### RenderLogsController
 It is our controller of the application. It contanins a method called renderLogs().
 ```
     @Autowired
@@ -198,27 +198,27 @@ Here, Spring by using @Autowired, it autowires the instance of resourceInfo obje
 ### Testing Strategy
 Below section will mention, what different scenarios and edge cases are considered and tested.
 
-##### ResourceInfoTest
+#### ResourceInfoTest
 - All the tests added here check these scenarios:
   -- gets default message if file not found or some exception occurs
   -- verifies if it works with an extra trailing "/" in path
   -- verifies if it works when file is under multilevel hierarchy of directories
   -- verifies if these logs returned, *preserve* the formatting or not. example: "\n" gets preserved
 
-##### LogReadConfigTest
+#### LogReadConfigTest
 With @ActiveProfiles and @ContextConfiguration, these tests set "application-test.yaml" as an active profile to override configurations
 
 the test here checks this scenario:
 - verifies that our bean method getResourceConfig() is able to read yaml configurations properly when started
 
-##### RenderLogsControllerTest
+#### RenderLogsControllerTest
 
 all the tests here check these scenarios:
 - verifies that if resource name and path are not given, default message gets rendered
 - verifies that if correct resource name and path are given, file contents get rendered
 
-##### RenderLogsApplicationTests
-Basic test which loads "application-test.yaml" as an activeProfile and verifies if returned object for renderLogsController is not Null.
+#### RenderLogsApplicationTests
+Basic unit test which loads "application-test.yaml" as an activeProfile and verifies if returned object for renderLogsController is not Null.
 
 ### Future Improvement
 - Here, file is assumed to have <1000 lines and *infrequent changes*. So I am loading and reading this file on the startup so we don't need to do a lot when request is made. But if we have the file changing *frequently*, different strategy for reading would make more sense.
