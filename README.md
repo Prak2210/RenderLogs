@@ -12,6 +12,7 @@ Java (openjdk@11) Spring Boot based Application which has following features bas
     * Helpful if we want to deploy the API in future and have CD tools to modify just configurations without going through entire build.
 - In case of a "FileNotFound", application outputs "defaultMessage" provided by developers in config file.
 - Application leverages Spring Boot Framework and capabilities of annotators provided by it
+- path: "/directory1/" and "/directory1" both work.
 - Some of the classes have private variables, getters and setters for access control
 
 ### Points Covered:
@@ -137,7 +138,7 @@ It's a component which gets scanned during component scan as part of @SpringBoot
 public ResourceInfo getResourceInfo() throws IOException {
 ```
 - @Bean method getResourceInfo gets instantiated and assembled by Spring IoC at the scan time. Method instantiates ResourceInfo object with parameters passed from yaml configs.
-- Once instantiated ResourceInfo, it calls "read"  on it and returns the object.
+- Once instantiated ResourceInfo, it calls read() on it and returns the object.
 
 ##### ResourceInfo
 - This class handles reading from log data file
@@ -162,9 +163,10 @@ ResourceInfo(String resourcePath, String resourceName, String defaultMessage) {
 This is one of the main functions of the application.
 ```
 For example, 
--resources
-    - logs
-so our path will be "/logs"
+-resources/
+    - logs/
+         - file.txt
+so our path will be "/logs/"
 
 read() {
     1. reads file as an inputStream from resourcePath + "/" + resourceName
@@ -201,7 +203,7 @@ Below section will mention, what different scenarios and edge cases are consider
   -- gets default message if file not found or some exception occurs
   -- verifies if it works with an extra trailing "/" in path
   -- verifies if it works when file is under multilevel hierarchy of directories
-  -- verifies if these logs returned, preserve the formatting or not. example: "\n" gets preserved
+  -- verifies if these logs returned, *preserve* the formatting or not. example: "\n" gets preserved
 
 ##### LogReadConfigTest
 With @ActiveProfiles and @ContextConfiguration, these tests set "application-test.yaml" as an active profile to override configurations
